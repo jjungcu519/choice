@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div></div>
+<div>
+    <h2>{{poll.title}}</h2>
+    <h2>{{poll.content1}}</h2>
+    <h2>{{poll.content2}}</h2>
+</div>
+<hr>
+<div>
+    <form action="/detail/<int:id>/comments/create/" method="POST">
+        {% csrf_token %}
+        <label for="choices">답변:</label>
+        <select name="choices" id="choices">
+            {% for comment in choices %}
+                <option value="{{ choice.value }}">{{ choice.display }}</option>
+            {% endfor %}
+        </select>
+        {{form}}
+        <input type="submit">
+    </form>
+</div>
+<hr>
+<div>
+    {% for comment in poll.comment_set.all %}
+        <li>{{comment.content}}</li>
+    {% endfor %}
+</div>
+{% endblock %}

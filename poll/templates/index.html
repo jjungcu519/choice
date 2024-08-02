@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Question</h2>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td><strong>id</strong></td>
+                <td><strong>title</strong></td>
+                <td><strong>detail</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for poll in polls %}
+        <tr>
+            <td>{{poll.id}}</td>
+            <td>{{poll.title}}</td>
+            <td><a href="/detail/<id>">link</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
